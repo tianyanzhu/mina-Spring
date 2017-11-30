@@ -13,7 +13,7 @@ import org.apache.mina.core.session.IoSession;
 
 public class MyHandler extends IoHandlerAdapter {
 
-	private final int IDLE = 2;//µ¥Î»Ãë
+	private final int IDLE = 2;//å•ä½ç§’
 
 	private final Logger LOG = Logger.getLogger(MyHandler.class);
 
@@ -26,7 +26,7 @@ public class MyHandler extends IoHandlerAdapter {
 	@Override
 	public void exceptionCaught(IoSession session, Throwable cause) throws Exception {
 		// TODO Auto-generated method stub
-		session.closeOnFlush();
+		session.getCloseFuture().setClosed();
 		LOG.warn("session occured exception, so close it." + cause.getMessage());
 		LOG.warn(cause.toString());
 	}
@@ -34,12 +34,12 @@ public class MyHandler extends IoHandlerAdapter {
 	@Override
 	public void messageReceived(IoSession session, Object message) throws Exception {
 		String str = message.toString();
-		LOG.warn("¿Í»§¶Ë" + ((InetSocketAddress) session.getRemoteAddress()).getAddress().getHostAddress() + "Á¬½Ó³É¹¦£¡");
+		LOG.warn("å®¢æˆ·ç«¯" + ((InetSocketAddress) session.getRemoteAddress()).getAddress().getHostAddress() + "è¿æ¥æˆåŠŸï¼");
 
 		session.setAttribute("type", message);
 		String remoteAddress = ((InetSocketAddress) session.getRemoteAddress()).getAddress().getHostAddress();
 		session.setAttribute("ip", remoteAddress);
-		LOG.warn("·şÎñÆ÷ÊÕµ½µÄÏûÏ¢ÊÇ£º" + str);
+		LOG.warn("æœåŠ¡å™¨æ”¶åˆ°çš„æ¶ˆæ¯æ˜¯ï¼š" + str);
 		session.write("welcome by he");
 
 	}
@@ -47,7 +47,7 @@ public class MyHandler extends IoHandlerAdapter {
 	@Override
 	public void messageSent(IoSession session, Object message) throws Exception {
 		LOG.warn("messageSent:" + message);
-
+		//session.write("send message ");
 	}
 
 	@Override
@@ -66,7 +66,7 @@ public class MyHandler extends IoHandlerAdapter {
 	@Override
 	public void sessionClosed(IoSession session) throws Exception {
 		LOG.warn("sessionClosed.");
-		session.closeOnFlush();
+		session.getCloseFuture().setClosed();
 		sessions.remove(session);
 
 		// my

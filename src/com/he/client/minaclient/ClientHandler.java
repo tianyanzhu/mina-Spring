@@ -5,46 +5,49 @@ import org.apache.mina.core.service.IoHandlerAdapter;
 import org.apache.mina.core.session.IdleStatus;
 import org.apache.mina.core.session.IoSession;
 
-public class ClientHandler extends IoHandlerAdapter{
-	private final Logger LOG = Logger.getLogger(ClientHandler.class);  
-	 
+public class ClientHandler extends IoHandlerAdapter {
+	private final Logger LOG = Logger.getLogger(ClientHandler.class);
+
 	@Override
 	public void messageReceived(IoSession session, Object message) throws Exception {
 		// TODO Auto-generated method stub
 //		System.out.println("message :"+message);
-		LOG.warn("¿Í»§¶ËÊÕµ½ÏûÏ¢£º" + message);
-		if (message.toString().equals("1111")) {
-			//ÊÕµ½ĞÄÌø°ü
-			LOG.warn("ÊÕµ½ĞÄÌø°ü");
-			session.write("1112");
-		}
+		LOG.warn("å®¢æˆ·ç«¯æ”¶åˆ°æ¶ˆæ¯ï¼š" + message);
+		if (message.toString().equals("HEART_BEAT_REQ")) {
+			//æ”¶åˆ°å¿ƒè·³åŒ…
+			LOG.warn("æ”¶åˆ°å¿ƒè·³åŒ…");
+			session.write("HEART_BEAT_RESP");
+		}/*else{
+			LOG.warn("æ”¶åˆ°ä¸šåŠ¡æ¶ˆæ¯");
+			session.write("å“ˆå“ˆ");
+		}*/
 		LOG.warn(session);
 	}
-	
+
 	@Override
 	public void messageSent(IoSession session, Object message) throws Exception {
 		// TODO Auto-generated method stub
 		super.messageSent(session, message);
 	}
-	
+
 	@Override
 	public void sessionClosed(IoSession session) throws Exception {
 		// TODO Auto-generated method stub
 		super.sessionClosed(session);
 	}
-	
+
 	@Override
 	public void sessionCreated(IoSession session) throws Exception {
 		// TODO Auto-generated method stub
 		super.sessionCreated(session);
 	}
-	
+
 	@Override
 	public void sessionIdle(IoSession session, IdleStatus status) throws Exception {
 		// TODO Auto-generated method stub
 		super.sessionIdle(session, status);
 	}
-	
+
 	@Override
 	public void sessionOpened(IoSession session) throws Exception {
 		// TODO Auto-generated method stub

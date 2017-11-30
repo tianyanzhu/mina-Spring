@@ -1,21 +1,22 @@
 package com.he.server;
 
+import org.apache.mina.core.session.IoSession;
+
 import java.util.Iterator;
 
-import org.apache.mina.common.IoSession;
 
 /**
- *@function£ºÄ£ÄâÈº·¢£¬ÔÚ·şÎñ¶ËºÍ¿Í»§¶Ë¶¼Æô¶¯Ö®ºó£¬¿ÉÒÔÔËĞĞ´Ë·½·¨Èº·¢ÏûÏ¢
- *@date£º2016-9-27 ÏÂÎç03:42:42
+ *@functionï¼šæ¨¡æ‹Ÿç¾¤å‘ï¼Œåœ¨æœåŠ¡ç«¯å’Œå®¢æˆ·ç«¯éƒ½å¯åŠ¨ä¹‹åï¼Œå¯ä»¥è¿è¡Œæ­¤æ–¹æ³•ç¾¤å‘æ¶ˆæ¯
+ *@dateï¼š2016-9-27 ä¸‹åˆ03:42:42
  *@author:He.
- *@notice£º
+ *@noticeï¼š
  */
 public class SendToAllTest {
 	public static void main(String[] args) {
 		System.out.println(MyHandler.sessions.size());
 		for (Iterator iterator = MyHandler.sessions.iterator(); iterator.hasNext();) {
 			IoSession session = (IoSession) iterator.next();
-			session.write("·¢ËÍÏµÍ³ÏûÏ¢");
+			session.write("å‘é€ç³»ç»Ÿæ¶ˆæ¯");
 		}
 	}
 }

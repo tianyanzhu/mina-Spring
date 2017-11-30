@@ -1,4 +1,4 @@
-package com.he.client;
+package com.he.client.socket;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
@@ -6,10 +6,10 @@ import java.io.PrintWriter;
 import java.net.Socket;
 
 /**
- *@function£ºjavaµÄ¼òµ¥µÄÌ×½Ó×ÖÁ¬½Ó£¬¶ÌÁ¬½Ó£¬Âú×ãÒ»´ÎĞÔµÄÊÕ·¢£»×¢ÊÍ²¿·Ö¿ÉÒÔÍ¨¹ı¿ØÖÆÌ¨½ÓÊÜÊäÈë×Ö·û
+ *@functionï¼šjavaçš„ç®€å•çš„å¥—æ¥å­—è¿æ¥ï¼ŒçŸ­è¿æ¥ï¼Œæ»¡è¶³ä¸€æ¬¡æ€§çš„æ”¶å‘ï¼›æ³¨é‡Šéƒ¨åˆ†å¯ä»¥é€šè¿‡æ§åˆ¶å°æ¥å—è¾“å…¥å­—ç¬¦
  *@parameter:
- *@return£º
- *@date£º2016-6-22 ÏÂÎç03:41:07
+ *@returnï¼š
+ *@dateï¼š2016-6-22 ä¸‹åˆ03:41:07
  *@author:he
  *@notice:
  */
@@ -19,71 +19,71 @@ public class ScoketTest {
 		try {
 			Socket socket = new Socket("127.0.0.1", 8888);
 			PrintWriter os = new PrintWriter(socket.getOutputStream());
-			os.println("²âÊÔÏûÏ¢");
+			os.println("æµ‹è¯•æ¶ˆæ¯");
 			os.flush();
 
 			BufferedReader is = new BufferedReader(new InputStreamReader(socket.getInputStream()));
 			String msg = is.readLine();
-			System.out.println("¿Í»§¶ËÊÕµ½£º" + msg);
+			System.out.println("å®¢æˆ·ç«¯æ”¶åˆ°ï¼š" + msg);
 
 			os.close();
-			socket.close(); 
+			socket.close();
 
 		} catch (Exception e) {
 			// TODO: handle exception
 			e.printStackTrace();
-			System.out.println("+++++¿Í»§¶Ë·¢ÉúÒì³£+++++");
+			System.out.println("+++++å®¢æˆ·ç«¯å‘ç”Ÿå¼‚å¸¸+++++");
 		}
 	}
 	// public static void main(String[] args) {
 	// try {
 	// Socket socket = new Socket("127.0.0.1", 8888);
 	//
-	// //ÓÉÏµÍ³±ê×¼ÊäÈëÉè±¸¹¹ÔìBufferedReader¶ÔÏó
+	// //ç”±ç³»ç»Ÿæ ‡å‡†è¾“å…¥è®¾å¤‡æ„é€ BufferedReaderå¯¹è±¡
 	// BufferedReader sin = new BufferedReader(new
 	// InputStreamReader(System.in));
 	//
-	// //ÓÉSocket¶ÔÏóµÃµ½Êä³öÁ÷£¬²¢¹¹ÔìPrintWriter¶ÔÏó¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡
+	// //ç”±Socketå¯¹è±¡å¾—åˆ°è¾“å‡ºæµï¼Œå¹¶æ„é€ PrintWriterå¯¹è±¡ã€€ã€€ã€€ã€€ã€€ã€€ã€€ã€€
 	// PrintWriter os = new PrintWriter(socket.getOutputStream());
 	//
-	// //ÓÉSocket¶ÔÏóµÃµ½ÊäÈëÁ÷£¬²¢¹¹ÔìÏàÓ¦µÄBufferedReader¶ÔÏó
+	// //ç”±Socketå¯¹è±¡å¾—åˆ°è¾“å…¥æµï¼Œå¹¶æ„é€ ç›¸åº”çš„BufferedReaderå¯¹è±¡
 	// BufferedReader is = new BufferedReader(new
 	// InputStreamReader(socket.getInputStream()));
 	//
 	// String readline;
 	//
 	// readline = sin.readLine();
-	// //´ÓÏµÍ³±ê×¼ÊäÈë¶ÁÈëÒ»×Ö·û´®
+	// //ä»ç³»ç»Ÿæ ‡å‡†è¾“å…¥è¯»å…¥ä¸€å­—ç¬¦ä¸²
 	//
 	// while (!readline.equals("bye")) {
-	// //Èô´Ó±ê×¼ÊäÈë¶ÁÈëµÄ×Ö·û´®Îª "bye"ÔòÍ£Ö¹Ñ­»·
+	// //è‹¥ä»æ ‡å‡†è¾“å…¥è¯»å…¥çš„å­—ç¬¦ä¸²ä¸º "bye"åˆ™åœæ­¢å¾ªç¯
 	//				
 	// os.println(readline);
-	// //½«´ÓÏµÍ³±ê×¼ÊäÈë¶ÁÈëµÄ×Ö·û´®Êä³öµ½Server
+	// //å°†ä»ç³»ç»Ÿæ ‡å‡†è¾“å…¥è¯»å…¥çš„å­—ç¬¦ä¸²è¾“å‡ºåˆ°Server
 	//				
 	// os.flush();
-	// //Ë¢ĞÂÊä³öÁ÷£¬Ê¹ServerÂíÉÏÊÕµ½¸Ã×Ö·û´®
+	// //åˆ·æ–°è¾“å‡ºæµï¼Œä½¿Serveré©¬ä¸Šæ”¶åˆ°è¯¥å­—ç¬¦ä¸²
 	//
 	// System.out.println("Client:" + readline);
-	// //ÔÚÏµÍ³±ê×¼Êä³öÉÏ´òÓ¡¶ÁÈëµÄ×Ö·û´®
+	// //åœ¨ç³»ç»Ÿæ ‡å‡†è¾“å‡ºä¸Šæ‰“å°è¯»å…¥çš„å­—ç¬¦ä¸²
 	//
 	// System.out.println("Server:" + is.readLine());
-	// //´ÓServer¶ÁÈëÒ»×Ö·û´®£¬²¢´òÓ¡µ½±ê×¼Êä³öÉÏ
+	// //ä»Serverè¯»å…¥ä¸€å­—ç¬¦ä¸²ï¼Œå¹¶æ‰“å°åˆ°æ ‡å‡†è¾“å‡ºä¸Š
 	//
 	// readline = sin.readLine();
-	// //´ÓÏµÍ³±ê×¼ÊäÈë¶ÁÈëÒ»×Ö·û´®
+	// //ä»ç³»ç»Ÿæ ‡å‡†è¾“å…¥è¯»å…¥ä¸€å­—ç¬¦ä¸²
 	// }
-	// //¼ÌĞøÑ­»·
+	// //ç»§ç»­å¾ªç¯
 	//
-	// os.close(); //¹Ø±ÕSocketÊä³öÁ÷
+	// os.close(); //å…³é—­Socketè¾“å‡ºæµ
 	//
-	// is.close(); //¹Ø±ÕSocketÊäÈëÁ÷
+	// is.close(); //å…³é—­Socketè¾“å…¥æµ
 	//
-	// socket.close(); //¹Ø±ÕSocket
+	// socket.close(); //å…³é—­Socket
 	//
 	// } catch (Exception e) {
 	// // TODO: handle exception
-	// System.out.println("+++++¿Í»§¶Ë·¢ÉúÒì³£+++++");
+	// System.out.println("+++++å®¢æˆ·ç«¯å‘ç”Ÿå¼‚å¸¸+++++");
 	// }
 	// }
 }

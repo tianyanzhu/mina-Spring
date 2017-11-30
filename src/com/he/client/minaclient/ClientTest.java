@@ -10,24 +10,24 @@ import org.apache.mina.filter.logging.LoggingFilter;
 import org.apache.mina.transport.socket.nio.NioSocketConnector;
 
 /**
- *@function£º»ùÓÚmina¿ò¼ÜµÄ¿Í»§¶Ë£¬½á¹¹ºÍmina·şÎñ¶ËÒ»Ö±
- *@date£º2016-9-27 ÏÂÎç03:45:30
+ *@functionï¼šåŸºäºminaæ¡†æ¶çš„å®¢æˆ·ç«¯ï¼Œç»“æ„å’ŒminaæœåŠ¡ç«¯ä¸€ç›´
+ *@dateï¼š2016-9-27 ä¸‹åˆ03:45:30
  *@author:He.
- *@notice£º
+ *@noticeï¼š
  */
 public class ClientTest {
 	public static void main(String[] args) throws InterruptedException {
-		//´´½¨¿Í»§¶ËÁ¬½ÓÆ÷. 
+		//åˆ›å»ºå®¢æˆ·ç«¯è¿æ¥å™¨. 
 		NioSocketConnector connector = new NioSocketConnector();
 		connector.getFilterChain().addLast("logger", new LoggingFilter());
 		connector.getFilterChain().addLast("codec",
-				new ProtocolCodecFilter(new TextLineCodecFactory(Charset.forName("utf-8")))); //ÉèÖÃ±àÂë¹ıÂËÆ÷ 
-		connector.setHandler(new ClientHandler());//ÉèÖÃÊÂ¼ş´¦ÀíÆ÷ 
-		ConnectFuture cf = connector.connect(new InetSocketAddress("127.0.0.1", 8888));//½¨Á¢Á¬½Ó 
-		cf.awaitUninterruptibly();//µÈ´ıÁ¬½Ó´´½¨Íê³É 
-		cf.getSession().write("hello,²âÊÔ£¡");//·¢ËÍÏûÏ¢ 
+				new ProtocolCodecFilter(new TextLineCodecFactory(Charset.forName("utf-8")))); //è®¾ç½®ç¼–ç è¿‡æ»¤å™¨ 
+		connector.setHandler(new ClientHandler());//è®¾ç½®äº‹ä»¶å¤„ç†å™¨ 
+		ConnectFuture cf = connector.connect(new InetSocketAddress("127.0.0.1", 8888));//å»ºç«‹è¿æ¥ 
+		cf.awaitUninterruptibly();//ç­‰å¾…è¿æ¥åˆ›å»ºå®Œæˆ 
+		cf.getSession().write("hello,æµ‹è¯•ï¼");//å‘é€æ¶ˆæ¯ 
 //		cf.getSession().closeOnFlush();
-//		cf.getSession().getCloseFuture().awaitUninterruptibly();//µÈ´ıÁ¬½Ó¶Ï¿ª 
+//		cf.getSession().getCloseFuture().awaitUninterruptibly();//ç­‰å¾…è¿æ¥æ–­å¼€ 
 //		connector.dispose();
 
 	}

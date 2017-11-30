@@ -6,6 +6,9 @@
   <packaging>war</packaging>
   <name/>
   <description/>
+    <properties>
+        <spring-core.version>4.3.2.RELEASE</spring-core.version>
+    </properties>
   <dependencies>
   
 <!-- my -->
@@ -65,17 +68,17 @@
     <dependency>
     	<groupId>org.springframework</groupId>
     	<artifactId>spring-core</artifactId>
-    	<version>3.0.1.RELEASE-A</version>
+    	<version>${spring-core.version}</version>
     </dependency>
     <dependency>
     	<groupId>org.springframework</groupId>
     	<artifactId>spring-beans</artifactId>
-    	<version>3.0.1.RELEASE-A</version>
+    	<version>${spring-core.version}</version>
     </dependency>
     <dependency>
     	<groupId>org.springframework</groupId>
     	<artifactId>spring-asm</artifactId>
-    	<version>3.0.1.RELEASE-A</version>
+    	<version>3.1.4.Release</version><!--3.0.1.RELEASE-A-->
     </dependency>
     <dependency>
     	<groupId>commons-logging</groupId>
@@ -90,17 +93,17 @@
     <dependency>
     	<groupId>org.springframework</groupId>
     	<artifactId>spring-context</artifactId>
-    	<version>3.0.1.RELEASE-A</version>
+    	<version>${spring-core.version}</version>
     </dependency>
     <dependency>
     	<groupId>org.springframework</groupId>
     	<artifactId>spring-expression</artifactId>
-    	<version>3.0.1.RELEASE-A</version>
+    	<version>${spring-core.version}</version>
     </dependency>
     <dependency>
     	<groupId>org.springframework</groupId>
     	<artifactId>spring-aop</artifactId>
-    	<version>3.0.1.RELEASE-A</version>
+    	<version>${spring-core.version}</version>
     </dependency>
     <dependency>
     	<groupId>aopalliance</groupId>
@@ -112,25 +115,25 @@
     	<artifactId>cglib-nodep</artifactId>
     	<version>2.2</version>
     </dependency>
-    <dependency>
-    	<groupId>org.aspectj</groupId>
-    	<artifactId>aspectjweaver</artifactId>
-    	<version>1.6.8.RELEASE</version>
-    </dependency>
+      <!--<dependency>
+          <groupId>org.aspectj</groupId>
+          <artifactId>aspectjweaver</artifactId>
+          <version>1.8.0.RELEASE</version>&lt;!&ndash;1.6.8.RELEASE&ndash;&gt;
+      </dependency>-->
     <dependency>
     	<groupId>org.springframework</groupId>
     	<artifactId>spring-aspects</artifactId>
-    	<version>3.0.1.RELEASE-A</version>
+    	<version>${spring-core.version}</version>
     </dependency>
     <dependency>
     	<groupId>org.springframework</groupId>
     	<artifactId>spring-instrument</artifactId>
-    	<version>3.0.1.RELEASE-A</version>
+    	<version>${spring-core.version}</version>
     </dependency>
     <dependency>
     	<groupId>org.springframework</groupId>
     	<artifactId>spring-instrument-tomcat</artifactId>
-    	<version>3.0.1.RELEASE-A</version>
+    	<version>${spring-core.version}</version>
     </dependency>
     <dependency>
     	<groupId>javax.persistence</groupId>
@@ -140,17 +143,17 @@
     <dependency>
     	<groupId>org.springframework</groupId>
     	<artifactId>spring-orm</artifactId>
-    	<version>3.0.1.RELEASE-A</version>
+    	<version>${spring-core.version}</version>
     </dependency>
     <dependency>
     	<groupId>org.springframework</groupId>
     	<artifactId>spring-jdbc</artifactId>
-    	<version>3.0.1.RELEASE-A</version>
+    	<version>${spring-core.version}</version>
     </dependency>
     <dependency>
     	<groupId>org.springframework</groupId>
     	<artifactId>spring-tx</artifactId>
-    	<version>3.0.1.RELEASE-A</version>
+    	<version>${spring-core.version}</version>
     </dependency>
     <dependency>
     	<groupId>c3p0</groupId>
@@ -177,21 +180,22 @@
     	<artifactId>commons-pool</artifactId>
     	<version>1.5.3</version>
     </dependency>
-    <dependency>
-    	<groupId>org.apache.commons</groupId>
-    	<artifactId>com.springsource.org.apache.commons.lang</artifactId>
-    	<version>2.4.0</version>
-    </dependency>
+      <dependency>
+          <groupId>org.apache.commons</groupId>
+          <artifactId>commons-lang3</artifactId>
+          <version>3.4</version>
+      </dependency>
     <dependency>
     	<groupId>org.springframework</groupId>
     	<artifactId>spring-test</artifactId>
-    	<version>3.0.1.RELEASE-A</version>
+    	<version>${spring-core.version}</version>
     </dependency>
-    <dependency>
-    	<groupId>org.junit</groupId>
-    	<artifactId>com.springsource.org.junit</artifactId>
-    	<version>4.7.0</version>
-    </dependency>
+     <!-- <dependency>
+          <groupId>org.junit</groupId>
+          <artifactId>com.springsource.org.junit</artifactId>
+          <version>4.7.0</version>
+          <scope>test</scope>
+      </dependency>-->
     <dependency>
     	<groupId>easymock</groupId>
     	<artifactId>easymock</artifactId>
@@ -217,15 +221,15 @@
     	<artifactId>testng</artifactId>
     	<version>6.8.21</version>
     </dependency>
-    <dependency>
-    	<groupId>javax.inject</groupId>
-    	<artifactId>com.springsource.javax.inject</artifactId>
-    	<version>1.0.0</version>
-    </dependency>
+     <!-- <dependency>
+          <groupId>javax.inject</groupId>
+          <artifactId>com.springsource.javax.inject</artifactId>
+          <version>1.0.0</version>
+      </dependency>-->
     <dependency>
     	<groupId>org.springframework</groupId>
     	<artifactId>spring-web</artifactId>
-    	<version>3.0.1.RELEASE-A</version>
+    	<version>${spring-core.version}</version>
     </dependency>
     <dependency>
     	<groupId>commons-fileupload</groupId>
@@ -237,31 +241,41 @@
     	<artifactId>commons-httpclient</artifactId>
     	<version>3.1</version>
     </dependency>
-    <dependency>
+    <!--<dependency>
     	<groupId>org.codehaus.jackson</groupId>
     	<artifactId>com.springsource.org.codehaus.jackson.mapper</artifactId>
     	<version>1.0.0</version>
-    </dependency>
+    </dependency>-->
     <dependency>
     	<groupId>org.springframework</groupId>
     	<artifactId>spring-oxm</artifactId>
-    	<version>3.0.1.RELEASE-A</version>
+    	<version>${spring-core.version}</version>
     </dependency>
     <dependency>
     	<groupId>org.springframework</groupId>
     	<artifactId>spring-webmvc</artifactId>
-    	<version>3.0.1.RELEASE-A</version>
+    	<version>${spring-core.version}</version>
     </dependency>
     <dependency>
     	<groupId>org.springframework</groupId>
     	<artifactId>spring-webmvc-portlet</artifactId>
-    	<version>3.0.1.RELEASE-A</version>
+    	<version>${spring-core.version}</version>
     </dependency>
-    <dependency>
-    	<groupId>org.springframework</groupId>
-    	<artifactId>spring-struts</artifactId>
-    	<version>3.0.1.RELEASE-A</version>
-    </dependency>
+      <dependency>
+          <groupId>org.apache.mina</groupId>
+          <artifactId>mina-core</artifactId>
+          <version>2.0.9</version>
+      </dependency>
+      <dependency>
+          <groupId>javax</groupId>
+          <artifactId>javaee-api</artifactId>
+          <version>7.0</version>
+      </dependency>
+      <!--<dependency>
+          <groupId>org.springframework</groupId>
+          <artifactId>spring-struts</artifactId>
+          <version>${spring-core.version}</version>
+      </dependency>-->
   </dependencies>
   <build>
     <sourceDirectory>${basedir}/src</sourceDirectory>

@@ -22,3 +22,4 @@ sendToAll写了一个群发的，服务端启动，客户端连接之后，群�
 <property name="forwardEvent" value="true" />
 即可以让相同的事件往下一个过滤器传递。
 
+以上都用来我自学用的

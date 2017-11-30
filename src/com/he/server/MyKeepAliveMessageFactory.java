@@ -5,38 +5,38 @@ import org.apache.mina.core.session.IoSession;
 import org.apache.mina.filter.keepalive.KeepAliveMessageFactory;
 
 public class MyKeepAliveMessageFactory implements  KeepAliveMessageFactory{
-	
-	private final Logger LOG = Logger.getLogger(MyKeepAliveMessageFactory.class);
-	
-    /** ĞÄÌø°üÄÚÈİ */  
-    private static final String HEARTBEATREQUEST = "1111";  
-    private static final String HEARTBEATRESPONSE = "1112"; 
 
-	public Object getRequest(IoSession session) {
-		LOG.warn("ÇëÇóÔ¤ÉèĞÅÏ¢: " + HEARTBEATREQUEST);  
-         /** ·µ»ØÔ¤ÉèÓï¾ä */  
-         return HEARTBEATREQUEST;
-	}
+    private final Logger LOG = Logger.getLogger(MyKeepAliveMessageFactory.class);
 
-	public Object getResponse(IoSession session, Object request) {
-		LOG.warn("ÏìÓ¦Ô¤ÉèĞÅÏ¢: " + HEARTBEATRESPONSE);  
-        /** ·µ»ØÔ¤ÉèÓï¾ä */  
-        return HEARTBEATRESPONSE;  
+    /** å¿ƒè·³åŒ…å†…å®¹ */
+    private static final String HEARTBEATREQUEST = "HEART_BEAT_REQ";
+    private static final String HEARTBEATRESPONSE ="HEART_BEAT_RESP";
+
+    public Object getRequest(IoSession session) {
+        LOG.warn("è¯·æ±‚é¢„è®¾ä¿¡æ¯: " + HEARTBEATREQUEST);
+        /** è¿”å›é¢„è®¾è¯­å¥ */
+        return HEARTBEATREQUEST;
+    }
+
+    public Object getResponse(IoSession session, Object request) {
+        LOG.warn("å“åº”é¢„è®¾ä¿¡æ¯: " + HEARTBEATRESPONSE);
+        /** è¿”å›é¢„è®¾è¯­å¥ */
+        return HEARTBEATRESPONSE;
 //      return null;  
-	}
+    }
 
-	public boolean isRequest(IoSession session, Object message) {
-		 LOG.warn("ÇëÇóĞÄÌø°üĞÅÏ¢: " + message);  
-         if (message.equals(HEARTBEATREQUEST))  
-             return true;  
-         return false;  
-	}
+    public boolean isRequest(IoSession session, Object message) {
+        LOG.warn("è¯·æ±‚å¿ƒè·³åŒ…ä¿¡æ¯: " + message);
+        if (message.equals(HEARTBEATREQUEST))
+            return true;
+        return false;
+    }
 
-	public boolean isResponse(IoSession session, Object message) {
-      LOG.warn("ÏìÓ¦ĞÄÌø°üĞÅÏ¢: " + message);  
-      if(message.equals(HEARTBEATRESPONSE))  
-          return true;
-		return false;
-	}
+    public boolean isResponse(IoSession session, Object message) {
+        LOG.warn("å“åº”å¿ƒè·³åŒ…ä¿¡æ¯: " + message);
+        if(message.equals(HEARTBEATRESPONSE))
+            return true;
+        return false;
+    }
 
 }

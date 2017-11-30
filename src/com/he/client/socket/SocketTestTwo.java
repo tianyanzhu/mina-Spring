@@ -1,4 +1,4 @@
-package com.he.client;
+package com.he.client.socket;
 
 import java.io.DataInputStream;
 import java.io.IOException;
@@ -6,20 +6,20 @@ import java.io.PrintWriter;
 import java.net.Socket;
 
 /**
- *@function£ºjavaµÄ¼òµ¥socketÁ¬½Ó£¬³¤Á¬½Ó£¬³¢ÊÔÁ¬Ğø´Ó·şÎñÆ÷»ñÈ¡ÏûÏ¢
+ *@functionï¼šjavaçš„ç®€å•socketè¿æ¥ï¼Œé•¿è¿æ¥ï¼Œå°è¯•è¿ç»­ä»æœåŠ¡å™¨è·å–æ¶ˆæ¯
  *@parameter:
- *@return£º
- *@date£º2016-6-22 ÏÂÎç03:43:18
+ *@returnï¼š
+ *@dateï¼š2016-6-22 ä¸‹åˆ03:43:18
  *@author:he
  *@notice:
  */
 public class SocketTestTwo {
-	public static final String IP_ADDR = "127.0.0.1";// ·şÎñÆ÷µØÖ·
-	public static final int PORT = 8888;// ·şÎñÆ÷¶Ë¿ÚºÅ
+	public static final String IP_ADDR = "127.0.0.1";// æœåŠ¡å™¨åœ°å€
+	public static final int PORT = 8888;// æœåŠ¡å™¨ç«¯å£å·
 	static String text = null;
 
 	public static void main(String[] args) throws IOException {
-		System.out.println("¿Í»§¶ËÆô¶¯...");
+		System.out.println("å®¢æˆ·ç«¯å¯åŠ¨...");
 		Socket socket = null;
 		socket = new Socket(IP_ADDR, PORT);
 		PrintWriter os = new PrintWriter(socket.getOutputStream());
@@ -28,28 +28,28 @@ public class SocketTestTwo {
 		os.flush();
 		while (true) {
 			try {
-				// ´´½¨Ò»¸öÁ÷Ì×½Ó×Ö²¢½«ÆäÁ¬½Óµ½Ö¸¶¨Ö÷»úÉÏµÄÖ¸¶¨¶Ë¿ÚºÅ
+				// åˆ›å»ºä¸€ä¸ªæµå¥—æ¥å­—å¹¶å°†å…¶è¿æ¥åˆ°æŒ‡å®šä¸»æœºä¸Šçš„æŒ‡å®šç«¯å£å·
 				DataInputStream input = new DataInputStream(socket.getInputStream());
-				// ¶ÁÈ¡·şÎñÆ÷¶ËÊı¾İ
+				// è¯»å–æœåŠ¡å™¨ç«¯æ•°æ®
 
 				byte[] buffer;
 				buffer = new byte[input.available()];
 				if (buffer.length != 0) {
 					System.out.println("length=" + buffer.length);
-					// ¶ÁÈ¡»º³åÇø
+					// è¯»å–ç¼“å†²åŒº
 					input.read(buffer);
-					// ×ª»»×Ö·û´®
+					// è½¬æ¢å­—ç¬¦ä¸²
 					String three = new String(buffer);
-					System.out.println("ÄÚÈİ=" + three);
+					System.out.println("å†…å®¹=" + three);
 					if (three.equals("1111\n")) {
-						System.out.println("·¢ËÍ·µ»ØĞÄÌø°ü");
+						System.out.println("å‘é€è¿”å›å¿ƒè·³åŒ…");
 						os = new PrintWriter(socket.getOutputStream());
 						os.println("1112");
 						os.flush();
 					}
 				}
 			} catch (Exception e) {
-				System.out.println("¿Í»§¶ËÒì³£:" + e.getMessage());
+				System.out.println("å®¢æˆ·ç«¯å¼‚å¸¸:" + e.getMessage());
 				os.close();
 			}
 		}
